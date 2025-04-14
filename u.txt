@@ -1,9 +1,37 @@
-{
-    "url": "https://jumpy-floor.surge.sh/test.yaml",
-    "urls": [
-        {
-            "url": "https://jumpy-floor.surge.sh/test.yaml",
-            "name": "Foo"
-        }
-    ]
-}
+import http.server
+import ssl
+import os
+
+# Define server address and port
+HOST = "localhost"
+PORT = 8443
+
+# Set up the server to serve files from the current directory
+server = http.server.HTTPServer((HOST, PORT), http.server.SimpleHTTPRequestHandler)
+
+# Path to SSL certificate and key (will create these next)
+cert_file = "server.crt"
+key_file = "server.key"
+
+# Ensure certificate and key files exist
+if not os.path.exists(cert_file) or not os.path.exists(key_file):
+    print(f"Error: {cert_file} or {key_file} not found.")
+    exit(1)
+
+# Wrap the server with SSL
+context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+context.load_cert_chain(certfile=cert_file, keyfile=key_file)
+
+server.socket = context.wrap_socket(server.socket, server_side=True)
+
+print(f"Serving files from {os.getcwd()} at https://{HOST}:{PORT}")
+try:
+    server.serve_forever()
+except KeyboardInterrupt:
+    print("\nServer stopped.")
+    server.server_close()
+
+
+cd /home/kali/webserver
+openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 -nodes
+
