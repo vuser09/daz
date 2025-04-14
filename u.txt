@@ -6,10 +6,28 @@ import os
 HOST = "localhost"
 PORT = 8443
 
-# Set up the server to serve files from the current directory
-server = http.server.HTTPServer((HOST, PORT), http.server.SimpleHTTPRequestHandler)
+# Custom handler to add CORS headers
+class CORSHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def end_headers(self):
+        # Add CORS headers
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', '*')
+        # Call the parent class's end_headers to complete the response
+        super().end_headers()
 
-# Path to SSL certificate and key (will create these next)
+    def do_OPTIONS(self):
+        # Handle preflight CORS requests
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', '*')
+        self.end_headers()
+
+# Set up the server to serve files from the current directory
+server = http.server.HTTPServer((HOST, PORT), CORSHTTPRequestHandler)
+
+# Path to SSL certificate and key
 cert_file = "server.crt"
 key_file = "server.key"
 
@@ -30,8 +48,3 @@ try:
 except KeyboardInterrupt:
     print("\nServer stopped.")
     server.server_close()
-
-
-cd /home/kali/webserver
-openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 -nodes
-
